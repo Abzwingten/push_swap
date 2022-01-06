@@ -1,5 +1,3 @@
-.PHONY: libft all clean fclean re
-
 NAME_PS 	= 	push_swap
 NAME_CK 	= 	checker
 
@@ -15,7 +13,7 @@ SRCS_PS		=	srcs/push_swap.c \
 SRCS_CK		=	srcs/checker.c \
 		
 CC_FLAG		=	-Wall -Werror -Wextra
-LIBFT_FLAG	=	-Llibft -lft
+LIBFT_FLAG	=	-Llibft -lft -Ilibft/includes
 INCL_FLAG	:=	-Iinclude
 
 CC			:=	gcc $(CC_FLAG)
@@ -24,13 +22,15 @@ OBJS		:=	$(SRCS:.c=.o)
 OBJS_PS		:=	$(SRCS_PS:.c=.o)
 OBJS_CK		:=	$(SRCS_CK:.c=.o)
 
+.PHONY: libft all clean fclean re
+
 all:		$(NAME_PS) $(NAME_CK)
 
 libft:
 	$(MAKE) -C libft
 
-$(.o):		$(.c)
-	$(CC) -o $@ -c $< $(INCL_FLAG) $(LIBFT_FLAG) 
+%.o:		%.c
+	$(CC) $(INCL_FLAG) $(LIBFT_FLAG)  -o $@ -c $< 
 
 $(NAME_PS):	libft $(OBJS) $(OBJS_PS)
 	$(CC) -o $@ $(OBJS) $(OBJS_PS) $(LIBFT_FLAG) $(INCL_FLAG)

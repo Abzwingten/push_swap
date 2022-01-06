@@ -1,9 +1,9 @@
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-# include "../libft/includes/libft.h"
-# include "../libft/includes/ft_printf.h"
-# include "../libft/includes/get_next_line.h"
+# include "libft.h"
+# include "ft_printf.h"
+# include "get_next_line.h"
 
 
 # include <limits.h>
