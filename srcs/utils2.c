@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-int	free_all(t_ps *ps)
+int	free_all(t_pusw *ps)
 {
 	while (ps->a->head)
 		free(pop(ps->a));
@@ -16,14 +16,14 @@ int	free_all(t_ps *ps)
 	return (0);
 }
 
-void	error_exit(t_ps *ps)
+void	error_exit(t_pusw *ps)
 {
 	ft_putstr_fd("Error\n", 1);
 	free_all(ps);
 	exit(1);
 }
 
-int	get_int(t_ps *ps, const char *str)
+int	get_int(t_pusw *ps, const char *str)
 {
 	int			sign;
 	uint64_t	ans;

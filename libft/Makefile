@@ -37,7 +37,7 @@ OBJ_LIB		= 	$(SRC:%.c=%.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJ_LIB)
-	@$(AR) rcsv $(NAME) $(HEADER_LIB) $^ 
+	@$(AR) rcs $(NAME) $(HEADER_LIB) $^ 
 	@echo "MEGA LIBFT DONE"
 
 %.o	:	%.c $(HEADER_LIB)

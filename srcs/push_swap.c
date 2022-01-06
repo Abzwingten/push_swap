@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-void	push_swap(t_ps *ps)
+void	push_swap(t_pusw *ps)
 {
 	int		i;
 	t_node	*n;
@@ -30,14 +30,14 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_ps	*ps;
+	t_pusw	*ps;
 	char	**args;
 
 	if (argc < 2)
 		return (0);
 	a = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	b = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	ps = (t_ps *)ft_calloc(1, sizeof(t_ps));
+	ps = (t_pusw *)ft_calloc(1, sizeof(t_pusw));
 	a->name = 'a';
 	b->name = 'b';
 	ps->a = a;

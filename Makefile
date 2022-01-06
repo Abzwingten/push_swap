@@ -1,3 +1,5 @@
+.PHONY: libft all clean fclean re
+
 NAME_PS 	= 	push_swap
 NAME_CK 	= 	checker
 
@@ -21,8 +23,6 @@ CC			:=	gcc $(CC_FLAG)
 OBJS		:=	$(SRCS:.c=.o)
 OBJS_PS		:=	$(SRCS_PS:.c=.o)
 OBJS_CK		:=	$(SRCS_CK:.c=.o)
-
-.PHONY: libft all clean fclean re
 
 all:		$(NAME_PS) $(NAME_CK)
 

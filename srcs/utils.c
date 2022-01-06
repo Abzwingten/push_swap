@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-void	parse_arg(t_ps *ps, char **arg, int ac)
+void	parse_arg(t_pusw *ps, char **arg, int ac)
 {
 	int	i;
 
@@ -18,7 +18,7 @@ void	parse_arg(t_ps *ps, char **arg, int ac)
 		free(arg);
 }
 
-void	check_dup(t_ps *ps)
+void	check_dup(t_pusw *ps)
 {
 	int		i;
 	t_node	*j;
@@ -39,7 +39,7 @@ void	check_dup(t_ps *ps)
 	}
 }
 
-void	least_case_sort(t_ps *ps)
+void	least_case_sort(t_pusw *ps)
 {
 	if (ps->a->size == 2
 		|| !(((ps->tmp[0] == ps->arr[2]) && (ps->tmp[1] == ps->arr[0]))

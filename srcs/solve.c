@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-t_bool	is_corr(t_ps *ps, t_node *a, t_node *b)
+t_bool	is_corr(t_pusw *ps, t_node *a, t_node *b)
 {
 	if (ps->size <= 1)
 		return (false);
@@ -11,7 +11,7 @@ t_bool	is_corr(t_ps *ps, t_node *a, t_node *b)
 	return (false);
 }
 
-int	calc_min(t_ps *ps, t_node *na, t_node *nb, int m)
+int	calc_min(t_pusw *ps, t_node *na, t_node *nb, int m)
 {
 	int	i;
 	int	j;
@@ -40,7 +40,7 @@ int	calc_min(t_ps *ps, t_node *na, t_node *nb, int m)
 	return (m);
 }
 
-void	move(t_ps *ps, int dir, t_stack	*s, int m)
+void	move(t_pusw *ps, int dir, t_stack	*s, int m)
 {
 	int		i;
 
@@ -69,7 +69,7 @@ void	move(t_ps *ps, int dir, t_stack	*s, int m)
 	pa(ps);
 }
 
-void	align(t_ps *ps, t_node *n)
+void	align(t_pusw *ps, t_node *n)
 {
 	int	i;
 
@@ -88,7 +88,7 @@ void	align(t_ps *ps, t_node *n)
 	}
 }
 
-void	solve(t_ps *ps, t_stack *a, t_stack *b, int *m)
+void	solve(t_pusw *ps, t_stack *a, t_stack *b, int *m)
 {
 	int	i;
 

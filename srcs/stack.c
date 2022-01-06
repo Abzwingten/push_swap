@@ -42,7 +42,7 @@ t_node	*pop(t_stack *stack)
 	return (ret);
 }
 
-void	append(t_ps *ps, t_stack *st, int val)
+void	append(t_pusw *ps, t_stack *st, int val)
 {
 	t_node	*node;
 
@@ -65,7 +65,7 @@ void	append(t_ps *ps, t_stack *st, int val)
 	st->size++;
 }
 
-t_node	*new_node(t_ps *ps, int val)
+t_node	*new_node(t_pusw *ps, int val)
 {
 	t_node	*new;
 

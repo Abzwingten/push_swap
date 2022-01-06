@@ -1,32 +1,32 @@
 #include "../include/push_swap.h"
 
-void	move_checker(t_ps *ps, int op)
+void	move_checker(t_pusw *ps, int op)
 {
-	if (op == O_SA)
+	if (op == OP_SA)
 		sx(ps->a);
-	else if (op == O_SB)
+	else if (op == OP_SB)
 		sx(ps->b);
-	else if (op == O_SS)
+	else if (op == OP_SS)
 		ss(ps);
-	else if (op == O_PA)
+	else if (op == OP_PA)
 		pa(ps);
-	else if (op == O_PB)
+	else if (op == OP_PB)
 		pb(ps);
-	else if (op == O_RA)
+	else if (op == OP_RA)
 		rx(ps->a);
-	else if (op == O_RB)
+	else if (op == OP_RB)
 		rx(ps->b);
-	else if (op == O_RR)
+	else if (op == OP_RR)
 		rr(ps);
-	else if (op == O_RRA)
+	else if (op == OP_RRA)
 		rrx(ps->a);
-	else if (op == O_RRB)
+	else if (op == OP_RRB)
 		rrx(ps->b);
-	else if (op == O_RRR)
+	else if (op == OP_RRR)
 		rrr(ps);
 }
 
-void	checker(t_ps *ps)
+void	checker(t_pusw *ps)
 {
 	char		*line;
 	const char	*op[12] = {"sa", "sb", "ss", "pa", "pb",
@@ -57,14 +57,14 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_ps	*ps;
+	t_pusw	*ps;
 	char	**args;
 
 	if (argc < 2)
 		return (0);
 	a = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	b = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	ps = (t_ps *)ft_calloc(1, sizeof(t_ps));
+	ps = (t_pusw *)ft_calloc(1, sizeof(t_pusw));
 	ps->a = a;
 	ps->b = b;
 	if (argc == 2)

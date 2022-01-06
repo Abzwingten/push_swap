@@ -1,6 +1,6 @@
 #include "../include/push_swap.h"
 
-void	pa(t_ps *ps)
+void	pa(t_pusw *ps)
 {
 	if (ps->b->size < 1)
 		return ;
@@ -9,7 +9,7 @@ void	pa(t_ps *ps)
 		ft_printf("pa\n");
 }
 
-void	pb(t_ps *ps)
+void	pb(t_pusw *ps)
 {
 	if (ps->a->size < 1)
 		return ;
@@ -33,7 +33,7 @@ void	sx(t_stack *x)
 		ft_printf("s%c\n", x->name);
 }
 
-void	ss(t_ps *ps)
+void	ss(t_pusw *ps)
 {
 	t_node	*pop_a1;
 	t_node	*pop_a2;

@@ -9,7 +9,7 @@ void	rx(t_stack *x)
 		ft_printf("r%c\n", x->name);
 }
 
-void	rr(t_ps *ps)
+void	rr(t_pusw *ps)
 {
 	if (ps->a->size >= 2)
 		ps->a->head = ps->a->head->next;
@@ -28,7 +28,7 @@ void	rrx(t_stack *x)
 		ft_printf("rr%c\n", x->name);
 }
 
-void	rrr(t_ps *ps)
+void	rrr(t_pusw *ps)
 {
 	if (ps->a->size >= 2)
 		ps->a->head = ps->a->head->prev;

@@ -9,17 +9,17 @@
 # include <limits.h>
 # include <stdint.h>
 
-# define O_SA 0
-# define O_SB 1
-# define O_SS 2
-# define O_PA 3
-# define O_PB 4
-# define O_RA 5
-# define O_RB 6
-# define O_RR 7
-# define O_RRA 8
-# define O_RRB 9
-# define O_RRR 10
+# define OP_SA 0
+# define OP_SB 1
+# define OP_SS 2
+# define OP_PA 3
+# define OP_PB 4
+# define OP_RA 5
+# define OP_RB 6
+# define OP_RR 7
+# define OP_RRA 8
+# define OP_RRB 9
+# define OP_RRR 10
 
 typedef enum e_bool
 {
@@ -41,7 +41,7 @@ typedef struct s_stack
 	char	name;
 }	t_stack;
 
-typedef struct s_ps
+typedef struct s_pusw
 {
 	int		*tmp;
 	int		*arr;
@@ -52,63 +52,62 @@ typedef struct s_ps
 	int		move[8];
 	t_stack	*a;
 	t_stack	*b;
-}	t_ps;
+}	t_pusw;
 
-void	push_swap(t_ps *ps);
-void	move_checker(t_ps *ps, int op);
-void	checker(t_ps *ps);
+void	push_swap(t_pusw *ps);
+void	move_checker(t_pusw *ps, int op);
+void	checker(t_pusw *ps);
 void	push(t_stack *stack, t_node *node);
 t_node	*pop(t_stack *stack);
-void	append(t_ps *ps, t_stack *stack, int val);
-t_node	*new_node(t_ps *ps, int val);
-t_bool	is_corr(t_ps *ps, t_node *a, t_node *b);
-int		calc_min(t_ps *ps, t_node *na, t_node *nb, int m);
-void	move(t_ps *ps, int dir, t_stack	*s, int m);
-void	align(t_ps *ps, t_node *n);
-void	solve(t_ps *ps, t_stack *a, t_stack *b, int *min);
-void	parse_arg(t_ps *ps, char **arg, int ac);
-void	check_dup(t_ps *ps);
-void	least_case_sort(t_ps *ps);
+void	append(t_pusw *ps, t_stack *stack, int val);
+t_node	*new_node(t_pusw *ps, int val);
+t_bool	is_corr(t_pusw *ps, t_node *a, t_node *b);
+int		calc_min(t_pusw *ps, t_node *na, t_node *nb, int m);
+void	move(t_pusw *ps, int dir, t_stack	*s, int m);
+void	align(t_pusw *ps, t_node *n);
+void	solve(t_pusw *ps, t_stack *a, t_stack *b, int *min);
+void	parse_arg(t_pusw *ps, char **arg, int ac);
+void	check_dup(t_pusw *ps);
+void	least_case_sort(t_pusw *ps);
 t_bool	check_sorted(t_stack *st);
 void	arr_qsort(int *arr, int l, int r);
-int		free_all(t_ps *ps);
-void	error_exit(t_ps *ps);
-int		get_int(t_ps *ps, const char *str);
-void	test(t_ps *ps);
+int		free_all(t_pusw *ps);
+void	error_exit(t_pusw *ps);
+int		get_int(t_pusw *ps, const char *str);
+void	test(t_pusw *ps);
 
-void	pa(t_ps *ps);
-void	pb(t_ps *ps);
+void	pa(t_pusw *ps);
+void	pb(t_pusw *ps);
 void	sx(t_stack *x);
-void	ss(t_ps *ps);
+void	ss(t_pusw *ps);
 void	rx(t_stack *x);
-void	rr(t_ps *ps);
+void	rr(t_pusw *ps);
 void	rrx(t_stack *x);
-void	rrr(t_ps *ps);
+void	rrr(t_pusw *ps);
+
 /*
-**	<operations>
-**
 **	sa: swap a - swap the first 2 elements at the top of stack a.
 **		Do nothing if there is only one or no elements). -> sx(t_stack *x)
 **	sb: swap b - swap the first 2 elements at the top of stack b.
 **		Do nothing if there is only one or no elements). -> sx(t_stack *x)
-**	ss : sa and sb at the same time. -> ss(t_ps *ps)
+**	ss : sa and sb at the same time. -> ss(t_pusw *ps)
 **
 **	pa: push a - take the first element at the top of b
-**		and put it at the top of a. Do nothing if b is empty. -> pa(t_ps *ps)
+**		and put it at the top of a. Do nothing if b is empty. -> pa(t_pusw *ps)
 **	pb: push b - take the first element at the top of a
-**		and put it at the top of b. Do nothing if a is empty. -> pb(t_ps *ps)
+**		and put it at the top of b. Do nothing if a is empty. -> pb(t_pusw *ps)
 **
 **	ra: rotate a - shift up all elements of stack a by 1.
 **		The first element becomes the last one. -> rx(t_stack *x)
 **	rb: rotate b - shift up all elements of stack b by 1.
 **		The first element becomes the last one. -> rx(t_stack *x)
-**	rr: ra and rb at the same time. -> rr(t_ps *ps)
+**	rr: ra and rb at the same time. -> rr(t_pusw *ps)
 **
 **	rra: reverse rotate a - shift down all elements of stack a by 1.
 **		 The last element becomes the first one. -> rrx(t_stack *x)
 **	rrb: reverse rotate b - shift down all elements of stack b by 1.
 **		 The last element becomes the first one. -> rrx(t_stack *x)
-**	rrr: rra and rrb at the same time. -> rrr(t_ps *ps)
+**	rrr: rra and rrb at the same time. -> rrr(t_pusw *ps)
 */
 
 #endif
