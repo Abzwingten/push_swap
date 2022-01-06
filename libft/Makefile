@@ -1,0 +1,56 @@
+NAME		=	libft.a
+
+CC			=	gcc
+CC_FLAGS	=	-Wall -Wextra -Werror -Iincludes/
+
+
+HEADER_LIB	=	$(addsuffix .h, $(addprefix includes/, libft get_next_line ft_printf))
+
+FT_IS		=	alnum alpha ascii count digit in print space spacenl where minmax
+FT_LST 		=	add_back add_front clear delone iter last map new size
+FT_MATH		=	abs nbrlen hexlen baselen power invsqrt
+FT_MEM 		=	bzero calloc memccpy memchr memcmp memcpy memfree memmove memset
+FT_PUT 		=	char endl nbr str char_fd endl_fd nbr_fd str_fd
+FT_STR 		=	chr cmp dup join lcat lcpy len mapi ncmp nstr rchr trim 
+FT_SUB 		=	substr split split_str save_free linebreak
+FT_TO 		=	tolower toupper atoi itoa
+FT_GNL 		=	gnl utils_gnl
+FT_PRINTF	=	choose convert_c convert_d convert_p convert_pct convert_s convert_u \
+				initializer parser_args parser_asterix parser place_bin printf uitoa_base
+
+SRC 		= 	$(addsuffix .c, $(addprefix ft_is/ft_is, $(FT_IS)))					\
+				$(addsuffix .c, $(addprefix ft_lst/ft_lst, $(FT_LST)))				\
+				$(addsuffix .c, $(addprefix ft_math/ft_, $(FT_MATH)))				\
+				$(addsuffix .c, $(addprefix ft_mem/ft_, $(FT_MEM)))					\
+				$(addsuffix .c, $(addprefix ft_put/ft_put, $(FT_PUT)))				\
+				$(addsuffix .c, $(addprefix ft_skip/ft_skip_, $(FT_SKIP)))			\
+				$(addsuffix .c, $(addprefix ft_str/ft_str, $(FT_STR)))				\
+				$(addsuffix .c, $(addprefix ft_str/ft_, $(FT_SUB)))					\
+				$(addsuffix .c, $(addprefix ft_to/ft_, $(FT_TO)))					\
+				$(addsuffix .c, $(addprefix ft_gnl/, $(FT_GNL)))					\
+				$(addsuffix .c, $(addprefix ft_printf/ft_, $(FT_PRINTF)))
+
+OBJ_LIB		= 	$(SRC:%.c=%.o)
+
+.PHONY: all clean fclean re norm
+
+all			:	$(NAME)
+
+$(NAME)		:	$(OBJ_LIB)
+	@$(AR) rcsv $(NAME) $(HEADER_LIB) $^ 
+	@echo "MEGA LIBFT DONE"
+
+%.o	:	%.c $(HEADER_LIB)
+	@${CC} ${CС_FLAGS} -c $< -o $@
+
+clean:
+	@$(RM) -rf $(OBJ_LIB)
+
+fclean: clean
+	@$(RM) -f $(NAME)
+
+re: fclean all
+
+norm:
+	@norminette $(SRC) $(HEADER)
+
