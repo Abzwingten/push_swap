@@ -1,5 +1,16 @@
-#include "../includes/ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_convert_p.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/09 17:14:20 by rantario          #+#    #+#             */
+/*   Updated: 2022/01/09 17:36:07 by rantario         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../includes/ft_printf.h"
 
 static void	ft_convert(t_bin *bin, void *p)
 {

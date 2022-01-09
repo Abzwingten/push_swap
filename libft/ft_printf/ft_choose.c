@@ -1,5 +1,16 @@
-#include "../includes/ft_printf.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_choose.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/09 17:14:31 by rantario          #+#    #+#             */
+/*   Updated: 2022/01/09 17:36:14 by rantario         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
+#include "../includes/ft_printf.h"
 
 void	ft_choose_conversion(t_bin *bin, va_list args)
 {

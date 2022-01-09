@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:05:11 by rantario          #+#    #+#             */
-/*   Updated: 2021/12/30 21:35:05 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/09 14:50:25 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
-
 char	ft_linebreak(char *line);
 char	**ft_split_str(char const *s, char *c);
 
@@ -41,6 +40,7 @@ size_t	ft_strlen(const char *str);
 size_t	ft_strlcpy(char *dest, const char *src, size_t size);
 size_t	ft_strlcat(char *dest, const char *src, size_t size);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
+char	*ft_strcpy(char *dest, char *src);
 char	*ft_strchr(const char *str, int c);
 char	*ft_strrchr(const char *str, int c);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
@@ -76,10 +76,8 @@ int		ft_isin(int c, char *base);
 int		ft_isspace(int c);
 int		ft_isspace(int c);
 int		ft_iswhere(int c, char *base);
-int 	ft_ismin(int a, int b);
+int		ft_ismin(int a, int b);
 int		ft_ismax(int a, int b);
-
-
 
 int		ft_abs(long num);
 int		ft_baselen(long num, int base);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_gnl.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sherbert <sherbert@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/09/26 23:25:45 by sherbert          #+#    #+#             */
-/*   Updated: 2021/11/22 18:35:40 by sherbert         ###   ########.fr       */
+/*   Updated: 2022/01/09 14:50:36 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,18 +53,4 @@ char	*ft_strjoin_gnl(char *s1, char *s2, int *ret)
 		str[i++] = *s2++;
 	str[i] = '\0';
 	return (str);
-}
-
-char	*ft_strcpy(char *dest, char *src)
-{
-	int			i;
-
-	i = 0;
-	while (src[i] != '\0')
-	{
-		dest[i] = src[i];
-		i++;
-	}
-	dest[i] = '\0';
-	return (dest);
 }

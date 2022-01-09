@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_parser.c                                        :+:      :+:    :+:   */
+/*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 17:13:39 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/09 17:35:51 by rantario         ###   ########.fr       */
+/*   Created: 2022/01/09 14:50:06 by rantario          #+#    #+#             */
+/*   Updated: 2022/01/09 14:50:31 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/ft_printf.h"
-
-t_bin	*ft_parser(t_format *frmt)
+char	*ft_strcpy(char *dest, char *src)
 {
-	t_bin	*bin;
+	int			i;
 
-	bin = ft_bin_initializer();
-	frmt->pos++;
-	ft_parser_flags(frmt, bin);
-	ft_parser_width(frmt, bin);
-	ft_parser_precision(frmt, bin);
-	ft_parser_length(frmt, bin);
-	ft_parser_conversion(frmt, bin);
-	return (bin);
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
 }

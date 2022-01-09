@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/01/09 13:14:54 by rantario          #+#    #+#             */
+/*   Updated: 2022/01/09 13:15:41 by rantario         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../include/push_swap.h"
 
 void	move_checker(t_pusw *ps, int op)
@@ -29,7 +41,7 @@ void	move_checker(t_pusw *ps, int op)
 void	checker(t_pusw *ps)
 {
 	char		*line;
-	const char	*op[12] = {"sa", "sb", "ss", "pa", "pb",
+	const char	*op[12] = {"sa", "sb", "ss", "pa", "pb", \
 							"ra", "rb", "rr", "rra", "rrb", "rrr", NULL};
 	int			i;
 

@@ -5,16 +5,18 @@ SRCS_SH		:=	srcs/stack.c \
 				srcs/operation_ps.c \
 				srcs/operation_r.c \
 				srcs/utils.c \
-				srcs/utils2.c
+				srcs/utils2.c \
 
 SRCS_PS		:=	$(SRCS_SH)	\
 				srcs/push_swap.c \
-				srcs/solve.c
+				srcs/solve.c \
 
 SRCS_CK		:=	$(SRCS_SH) \
-				srcs/checker.c
+				srcs/checker.c \
 
-CC_FLAG		:=	-Wall -Werror -Wextra
+DEPENDENCIES	:=	$(SRCS_PS:.c=.d) $(SRCS_CK:.c=.d)
+
+CC_FLAG		:=	-Wall -Werror -Wextra -g -std=c99
 LIBFT_FLAG	:=	-L./libft -lft
 INCL_FLAG	:=	-I./include -I./libft/includes
 
@@ -30,14 +32,14 @@ all:	libft $(NAME_CK) $(NAME_PS)
 libft:
 	$(MAKE) -C libft
 
-%.o:		%.c
+%.o:		%.c %.d
 	$(CC) $(INCL_FLAG) -o $@ -c $<
 
 $(NAME_PS): $(OBJS_PS)
-	$(CC) $(OBJS_PS) -o $@ $(LIBFT_FLAG)
+	$(CC) -MD $(OBJS_PS) -o $@ $(LIBFT_FLAG)
 
 $(NAME_CK):	$(OBJS_CK)
-	$(CC) $(OBJS_CK) -o $@ $(LIBFT_FLAG) 
+	$(CC) -MD $(OBJS_PS) -o $@ $(LIBFT_FLAG) 
 
 clean:
 	rm -f $(OBJS_SH) $(OBJS_PS) $(OBJS_CK)
@@ -48,3 +50,7 @@ fclean: clean
 	make -C libft fclean
 
 re: fclean all
+
+$(DEPENDENCIES):
+
+-include $(DEPENDENCIES)
