@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:05:11 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/09 14:50:25 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:46:50 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ int		ft_isin(int c, char *base);
 int		ft_isspace(int c);
 int		ft_isspace(int c);
 int		ft_iswhere(int c, char *base);
-int		ft_ismin(int a, int b);
-int		ft_ismax(int a, int b);
+int		ft_min(int a, int b);
+int		ft_max(int a, int b);
 
 int		ft_abs(long num);
 int		ft_baselen(long num, int base);
