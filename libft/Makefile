@@ -1,7 +1,7 @@
 NAME		:=	libft.a
 
 
-CC_FLAGS	:=	-Wall -Wextra -Werror -Iincludes/
+CC_FLAGS	:=	-Wall -Wextra -Werror -Iincludes/ -O2
 CC			:=	gcc $(CC_FLAGS)
 
 HEADER_LIB	:=	$(addsuffix .h, $(addprefix includes/, libft get_next_line ft_printf))
@@ -37,8 +37,10 @@ OBJ_LIB		:= 	$(SRC:.c=.o)
 all			:	$(NAME)
 
 $(NAME)		:	$(OBJ_LIB)
-	$(AR) rcs $(NAME) $^ 
+	$(AR) rcs $(NAME) $?
 	@echo "MEGA LIBFT DONE"
+
+
 
 %.o	:	%.c $(HEADER_LIB)
 	@${CC} ${CС_FLAGS} -c $< -o $@

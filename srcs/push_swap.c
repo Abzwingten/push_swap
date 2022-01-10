@@ -6,11 +6,11 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:15:08 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/09 13:15:09 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:41:23 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 void	push_swap(t_pusw *ps)
 {

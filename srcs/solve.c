@@ -6,11 +6,11 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:15:11 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/09 13:16:18 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 15:42:12 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/push_swap.h"
+#include "push_swap.h"
 
 t_bool	is_corr(t_pusw *ps, t_node *a, t_node *b)
 {

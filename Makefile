@@ -14,37 +14,42 @@ SRCS_PS		:=	$(SRCS_SH)	\
 SRCS_CK		:=	$(SRCS_SH) \
 				srcs/checker.c
 
-CC_FLAG		:=	-Wall -Werror -Wextra
+CC_FLAG		:=	-Wall -Werror -Wextra -O2
 LIBFT_FLAG	:=	-L./libft -lft
+HEAD		:=	include/push_swap.h
 INCL_FLAG	:=	-I./include -I./libft/includes
 
-CC			:=	gcc $(CC_FLAG)
+CC			:=	$(CC) $(CC_FLAG)
 
 OBJS_PS		:=	$(SRCS_PS:.c=.o)
 OBJS_CK		:=	$(SRCS_CK:.c=.o)
 
-.PHONY: libft all clean fclean re
+.PHONY		: libft all clean fclean re
 
-all:	libft $(NAME_CK) $(NAME_PS)
+all			:	libft $(NAME_PS) 
+	@echo "Der Pusswap ist gemacht"
 
-libft:
+libft		:
 	$(MAKE) -C libft
 
-%.o:		%.c
+%.o			:	%.c 
 	$(CC) $(INCL_FLAG) -o $@ -c $<
 
-$(NAME_PS): $(OBJS_PS)
+$(NAME_PS)	:	$(OBJS_PS) libft/libft.a
 	$(CC) $(OBJS_PS) -o $@ $(LIBFT_FLAG)
 
-$(NAME_CK):	$(OBJS_CK)
+$(NAME_CK)	:	$(OBJS_CK) libft/libft.a
 	$(CC) $(OBJS_CK) -o $@ $(LIBFT_FLAG) 
 
-clean:
+bonus		: libft $(NAME_CK)
+	@echo "Der Pusswap Bonus ist gemacht"
+
+clean		:
 	rm -f $(OBJS_SH) $(OBJS_PS) $(OBJS_CK)
 	make -C libft clean
 
-fclean: clean
+fclean		:	clean
 	rm -f $(NAME_PS) $(NAME_CK)
 	make -C libft fclean
 
-re: fclean all
+re			:	fclean all
