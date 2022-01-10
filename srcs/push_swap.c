@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:15:08 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 15:41:23 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 20:55:46 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	push_swap(t_pusw *ps)
 	int		i;
 	t_node	*n;
 
-	if (check_sorted(ps->a))
+	if (check_if_sorted(ps->a))
 		return ;
 	ps->arr = (int *)malloc(sizeof(int) * ps->a->size);
 	ps->tmp = (int *)malloc(sizeof(int) * ps->a->size);
@@ -31,7 +31,7 @@ void	push_swap(t_pusw *ps)
 		ps->arr[i] = n->val;
 		n = n->next;
 	}
-	arr_qsort(ps->arr, 0, ps->a->size - 1);
+	array_qsort(ps->arr, 0, ps->a->size - 1);
 	if (ps->size <= 3)
 		least_case_sort(ps);
 	else
@@ -57,11 +57,11 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		parse_arg(ps, args, argc);
+		parse_args(ps, args, argc);
 	}
 	else if (argc > 2)
-		parse_arg(ps, argv, argc);
-	check_dup(ps);
+		parse_args(ps, argv, argc);
+	check_for_dups(ps);
 	ps->size = a->size;
 	push_swap(ps);
 	return (free_all(ps));

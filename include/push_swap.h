@@ -6,31 +6,31 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 18:07:44 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/09 18:07:59 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 20:55:46 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
+# include <limits.h>
+# include <stdint.h>
+
 # include "libft.h"
 # include "ft_printf.h"
 # include "get_next_line.h"
 
-# include <limits.h>
-# include <stdint.h>
-
-# define OP_SA 0
-# define OP_SB 1
-# define OP_SS 2
-# define OP_PA 3
-# define OP_PB 4
-# define OP_RA 5
-# define OP_RB 6
-# define OP_RR 7
-# define OP_RRA 8
-# define OP_RRB 9
-# define OP_RRR 10
+# define OPER_SA 0
+# define OPER_SB 1
+# define OPER_SS 2
+# define OPER_PA 3
+# define OPER_PB 4
+# define OPER_RA 5
+# define OPER_RB 6
+# define OPER_RR 7
+# define OPER_RRA 8
+# define OPER_RRB 9
+# define OPER_RRR 10
 
 typedef enum e_bool
 {
@@ -77,11 +77,11 @@ int		calc_min(t_pusw *ps, t_node *na, t_node *nb, int m);
 void	move(t_pusw *ps, int dir, t_stack	*s, int m);
 void	align(t_pusw *ps, t_node *n);
 void	solve(t_pusw *ps, t_stack *a, t_stack *b, int *min);
-void	parse_arg(t_pusw *ps, char **arg, int ac);
-void	check_dup(t_pusw *ps);
+void	parse_args(t_pusw *ps, char **arg, int ac);
+void	check_for_dups(t_pusw *ps);
 void	least_case_sort(t_pusw *ps);
-t_bool	check_sorted(t_stack *st);
-void	arr_qsort(int *arr, int l, int r);
+t_bool	check_if_sorted(t_stack *st);
+void	array_qsort(int *arr, int l, int r);
 int		free_all(t_pusw *ps);
 void	error_exit(t_pusw *ps);
 int		get_int(t_pusw *ps, const char *str);

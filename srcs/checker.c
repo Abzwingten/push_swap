@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:14:54 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 15:42:12 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 20:55:46 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 void	move_checker(t_pusw *ps, int op)
 {
-	if (op == OP_SA)
+	if (op == OPER_SA)
 		sx(ps->a);
-	else if (op == OP_SB)
+	else if (op == OPER_SB)
 		sx(ps->b);
-	else if (op == OP_SS)
+	else if (op == OPER_SS)
 		ss(ps);
-	else if (op == OP_PA)
+	else if (op == OPER_PA)
 		pa(ps);
-	else if (op == OP_PB)
+	else if (op == OPER_PB)
 		pb(ps);
-	else if (op == OP_RA)
+	else if (op == OPER_RA)
 		rx(ps->a);
-	else if (op == OP_RB)
+	else if (op == OPER_RB)
 		rx(ps->b);
-	else if (op == OP_RR)
+	else if (op == OPER_RR)
 		rr(ps);
-	else if (op == OP_RRA)
+	else if (op == OPER_RRA)
 		rrx(ps->a);
-	else if (op == OP_RRB)
+	else if (op == OPER_RRB)
 		rrx(ps->b);
-	else if (op == OP_RRR)
+	else if (op == OPER_RRR)
 		rrr(ps);
 }
 
@@ -59,7 +59,7 @@ void	checker(t_pusw *ps)
 		}
 		free(line);
 	}
-	if (!ps->b->size && check_sorted(ps->a))
+	if (!ps->b->size && check_if_sorted(ps->a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
@@ -82,11 +82,11 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		parse_arg(ps, args, argc);
+		parse_args(ps, args, argc);
 	}
 	else if (argc > 2)
-		parse_arg(ps, argv, argc);
-	check_dup(ps);
+		parse_args(ps, argv, argc);
+	check_for_dups(ps);
 	ps->size = a->size;
 	ps->is_chk = 1;
 	checker(ps);

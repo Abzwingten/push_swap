@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:14:58 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 15:42:12 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 16:33:41 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,39 +32,39 @@ void	pb(t_pusw *ps)
 
 void	sx(t_stack *x)
 {
-	t_node	*pop_x1;
-	t_node	*pop_x2;
+	t_node	*pOPER_x1;
+	t_node	*pOPER_x2;
 
 	if (x->size < 2)
 		return ;
-	pop_x1 = pop(x);
-	pop_x2 = pop(x);
-	push(x, pop_x1);
-	push(x, pop_x2);
+	pOPER_x1 = pop(x);
+	pOPER_x2 = pop(x);
+	push(x, pOPER_x1);
+	push(x, pOPER_x2);
 	if (x->name)
 		ft_printf("s%c\n", x->name);
 }
 
 void	ss(t_pusw *ps)
 {
-	t_node	*pop_a1;
-	t_node	*pop_a2;
-	t_node	*pop_b1;
-	t_node	*pop_b2;
+	t_node	*pOPER_a1;
+	t_node	*pOPER_a2;
+	t_node	*pOPER_b1;
+	t_node	*pOPER_b2;
 
 	if (ps->a->size >= 2)
 	{
-		pop_a1 = pop(ps->a);
-		pop_a2 = pop(ps->a);
-		push(ps->a, pop_a1);
-		push(ps->a, pop_a2);
+		pOPER_a1 = pop(ps->a);
+		pOPER_a2 = pop(ps->a);
+		push(ps->a, pOPER_a1);
+		push(ps->a, pOPER_a2);
 	}
 	if (ps->b->size >= 2)
 	{
-		pop_b1 = pop(ps->b);
-		pop_b2 = pop(ps->b);
-		push(ps->b, pop_b1);
-		push(ps->b, pop_b2);
+		pOPER_b1 = pop(ps->b);
+		pOPER_b2 = pop(ps->b);
+		push(ps->b, pOPER_b1);
+		push(ps->b, pOPER_b2);
 	}
 	if (!ps->is_chk && (ps->a->size >= 2 || ps->b->size >= 2))
 		ft_printf("ss\n");

@@ -6,13 +6,13 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:15:20 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 15:42:12 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/10 20:55:46 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	parse_arg(t_pusw *ps, char **arg, int ac)
+void	parse_args(t_pusw *ps, char **arg, int ac)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ void	parse_arg(t_pusw *ps, char **arg, int ac)
 		free(arg);
 }
 
-void	check_dup(t_pusw *ps)
+void	check_for_dups(t_pusw *ps)
 {
 	int		i;
 	t_node	*j;
@@ -70,7 +70,7 @@ void	least_case_sort(t_pusw *ps)
 		rrx(ps->a);
 }
 
-t_bool	check_sorted(t_stack *st)
+t_bool	check_if_sorted(t_stack *st)
 {
 	t_node	*n;
 	int		tmp;
@@ -90,7 +90,7 @@ t_bool	check_sorted(t_stack *st)
 	return (true);
 }
 
-void	arr_qsort(int *arr, int l, int r)
+void	array_qsort(int *arr, int l, int r)
 {
 	int	i;
 	int	j;
@@ -114,7 +114,7 @@ void	arr_qsort(int *arr, int l, int r)
 		}
 	}
 	if (l < j)
-		arr_qsort(arr, l, j);
+		array_qsort(arr, l, j);
 	if (i < r)
-		arr_qsort(arr, i, r);
+		array_qsort(arr, i, r);
 }
