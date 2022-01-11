@@ -12,57 +12,57 @@
 
 #include "push_swap.h"
 
-void	push_swap(t_pusw *ps)
+void	push_swap(t_pusw *tridge)
 {
 	int		i;
-	t_node	*n;
+	t_node	*current;
 
-	if (check_if_sorted(ps->a))
+	if (check_if_sorted(tridge->a))
 		return ;
-	ps->arr = (int *)malloc(sizeof(int) * ps->a->size);
-	ps->tmp = (int *)malloc(sizeof(int) * ps->a->size);
-	if (!ps->arr || !ps->tmp)
-		error_exit(ps);
-	n = ps->a->head;
+	tridge->arr = (int *)malloc(sizeof(int) * tridge->a->size);
+	tridge->tmp = (int *)malloc(sizeof(int) * tridge->a->size);
+	if (!tridge->arr || !tridge->tmp)
+		error_exit(tridge);
+	current = tridge->a->head;
 	i = -1;
-	while (++i < (int)ps->a->size)
+	while (++i < (int)tridge->a->size)
 	{
-		ps->tmp[i] = n->val;
-		ps->arr[i] = n->val;
-		n = n->next;
+		tridge->tmp[i] = current->value;
+		tridge->arr[i] = current->value;
+		current = current->next;
 	}
-	array_qsort(ps->arr, 0, ps->a->size - 1);
-	if (ps->size <= 3)
-		least_case_sort(ps);
+	quick_sort(tridge->arr, 0, tridge->a->size - 1);
+	if (tridge->size <= 3)
+		least_case_sort(tridge);
 	else
-		solve(ps, ps->a, ps->b, ps->min);
+		solve(tridge, tridge->a, tridge->b, tridge->min);
 }
 
 int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_pusw	*ps;
+	t_pusw	*tridge;
 	char	**args;
 
 	if (argc < 2)
 		return (0);
 	a = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	b = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	ps = (t_pusw *)ft_calloc(1, sizeof(t_pusw));
+	tridge = (t_pusw *)ft_calloc(1, sizeof(t_pusw));
 	a->name = 'a';
 	b->name = 'b';
-	ps->a = a;
-	ps->b = b;
+	tridge->a = a;
+	tridge->b = b;
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		parse_args(ps, args, argc);
+		parse_args(tridge, args, argc);
 	}
 	else if (argc > 2)
-		parse_args(ps, argv, argc);
-	check_for_dups(ps);
-	ps->size = a->size;
-	push_swap(ps);
-	return (free_all(ps));
+		parse_args(tridge, argv, argc);
+	check_for_dups(tridge);
+	tridge->size = a->size;
+	push_swap(tridge);
+	return (free_all(tridge));
 }

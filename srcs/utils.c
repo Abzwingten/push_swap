@@ -1,120 +1,57 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/09 13:15:20 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 20:55:46 by rantario         ###   ########.fr       */
+/*   Created: 2022/01/09 13:15:24 by rantario          #+#    #+#             */
+/*   Updated: 2022/01/10 15:42:12 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	parse_args(t_pusw *ps, char **arg, int ac)
+int	free_all(t_pusw *tridge)
 {
-	int	i;
-
-	i = 1;
-	if (ac == 2)
-		i = 0;
-	while (arg[i])
-	{
-		append(ps, ps->a, get_int(ps, arg[i]));
-		if (ac == 2)
-			free(arg[i]);
-		i++;
-	}
-	if (ac == 2)
-		free(arg);
+	while (tridge->a->head)
+		free(pop(tridge->a));
+	free(tridge->a);
+	while (tridge->b->head)
+		free(pop(tridge->b));
+	free(tridge->b);
+	if (tridge->arr)
+		free(tridge->arr);
+	if (tridge->tmp)
+		free(tridge->tmp);
+	free(tridge);
+	return (0);
 }
 
-void	check_for_dups(t_pusw *ps)
+void	error_exit(t_pusw *tridge)
 {
-	int		i;
-	t_node	*j;
-	t_node	*k;
-
-	i = -1;
-	j = ps->a->head;
-	while (++i < (int)ps->a->size)
-	{
-		k = j->next;
-		while (j != k)
-		{
-			if (j->val == k->val)
-				error_exit(ps);
-			k = k->next;
-		}
-		j = j->next;
-	}
+	ft_putstr_fd("Error\n", 1);
+	free_all(tridge);
+	exit(1);
 }
 
-void	least_case_sort(t_pusw *ps)
+int	get_int(t_pusw *tridge, const char *str)
 {
-	if (ps->a->size == 2
-		|| !(((ps->tmp[0] == ps->arr[2]) && (ps->tmp[1] == ps->arr[0]))
-			|| ((ps->tmp[1] == ps->arr[2]) && (ps->tmp[2] == ps->arr[0]))))
-		sx(ps->a);
-	if (ps->a->size == 2)
-		return ;
-	ps->tmp[0] = ps->a->head->val;
-	ps->tmp[1] = ps->a->head->next->val;
-	ps->tmp[2] = ps->a->head->next->next->val;
-	if (ps->a->size != 2
-		&& ((ps->tmp[0] == ps->arr[2]) && (ps->tmp[1] == ps->arr[0])))
-		rx(ps->a);
-	else if (ps->a->size != 2
-		&& ((ps->tmp[1] == ps->arr[2]) && (ps->tmp[2] == ps->arr[0])))
-		rrx(ps->a);
-}
+	int			sign;
+	uint64_t	modulus;
 
-t_bool	check_if_sorted(t_stack *st)
-{
-	t_node	*n;
-	int		tmp;
-
-	n = st->head;
-	if (!n)
-		return (true);
-	tmp = n->val;
-	n = n->next;
-	while (n != st->head)
-	{
-		if (tmp > n->val)
-			return (false);
-		tmp = n->val;
-		n = n->next;
-	}
-	return (true);
-}
-
-void	array_qsort(int *arr, int l, int r)
-{
-	int	i;
-	int	j;
-	int	pvt;
-	int	tmp;
-
-	i = l;
-	j = r;
-	pvt = arr[(l + r) / 2];
-	while (i <= j)
-	{
-		while (arr[i] < pvt)
-			i++;
-		while (arr[j] > pvt)
-			j--;
-		if (i <= j)
-		{
-			tmp = arr[i];
-			arr[i++] = arr[j];
-			arr[j--] = tmp;
-		}
-	}
-	if (l < j)
-		array_qsort(arr, l, j);
-	if (i < r)
-		array_qsort(arr, i, r);
+	modulus = 0;
+	sign = 1;
+	while ((9 <= *str && *str <= 13) || *str == ' ')
+		str++;
+	if ((*str == '-' || *str == '+') && *(str++) == '-')
+		sign *= -1;
+	if (ft_strlen(str) > 10 || ft_strlen(str) == 0)
+		error_exit(tridge);
+	while ('0' <= *str && *str <= '9')
+		modulus = modulus * 10 + *(str++) - '0';
+	if (*str || (int64_t)(modulus * sign) < (int64_t)INT_MIN
+		|| (int64_t)INT_MAX < (int64_t)(modulus * sign))
+		error_exit(tridge);
+	return (modulus * sign);
 }

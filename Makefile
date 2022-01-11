@@ -4,8 +4,8 @@ NAME_CK 	:= 	checker
 SRCS_SH		:=	srcs/stack.c \
 				srcs/operation_ps.c \
 				srcs/operation_r.c \
-				srcs/utils.c \
-				srcs/utils2.c
+				srcs/sorting.c \
+				srcs/utils.c
 
 SRCS_PS		:=	$(SRCS_SH)	\
 				srcs/push_swap.c \
@@ -24,32 +24,36 @@ CC			:=	$(CC) $(CC_FLAG)
 OBJS_PS		:=	$(SRCS_PS:.c=.o)
 OBJS_CK		:=	$(SRCS_CK:.c=.o)
 
+# COLORS
+COLOR=\033[0;45m
+NC=\033[0m # No Color
+
 .PHONY		: libft all clean fclean re
 
 all			:	libft $(NAME_PS) 
-	@echo "Der Pusswap ist gemacht"
+	@echo -e "${COLOR}Der Pusswap ist gemacht${NC}"
 
 libft		:
-	$(MAKE) -C libft
+	@$(MAKE) -C libft
 
 %.o			:	%.c 
-	$(CC) $(INCL_FLAG) -o $@ -c $<
+	@$(CC) $(INCL_FLAG) -o $@ -c $<
 
 $(NAME_PS)	:	$(OBJS_PS) libft/libft.a
-	$(CC) $(OBJS_PS) -o $@ $(LIBFT_FLAG)
+	@$(CC) $(OBJS_PS) -o $@ $(LIBFT_FLAG)
 
 $(NAME_CK)	:	$(OBJS_CK) libft/libft.a
-	$(CC) $(OBJS_CK) -o $@ $(LIBFT_FLAG) 
+	@$(CC) $(OBJS_CK) -o $@ $(LIBFT_FLAG) 
 
 bonus		: libft $(NAME_CK)
-	@echo "Der Pusswap Bonus ist gemacht"
+	@echo -e "${COLOR}Der Pusswap  Bonus ist gemacht${NC}"
 
 clean		:
-	rm -f $(OBJS_SH) $(OBJS_PS) $(OBJS_CK)
-	make -C libft clean
+	@rm -f $(OBJS_SH) $(OBJS_PS) $(OBJS_CK)
+	@make -C libft clean
 
 fclean		:	clean
-	rm -f $(NAME_PS) $(NAME_CK)
-	make -C libft fclean
+	@rm -f $(NAME_PS) $(NAME_CK)
+	@make -C libft fclean
 
 re			:	fclean all
