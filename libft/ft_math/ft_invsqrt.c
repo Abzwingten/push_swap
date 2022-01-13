@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_invsqrt.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rantario <rantario@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 18:08:27 by rantario          #+#    #+#             */
-/*   Updated: 2021/12/30 18:15:30 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:13:38 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ float	ft_invsqrt(float x)
 	int		i;
 
 	xhalf = 0.5f * x;
-	i = *(int*) & x;
+	i = *(int *) & x;
 	i = 0x5f3759df - (i >> 1);
-	x = *(float*) & i;
+	x = *(float *) & i;
 	x = x * (1.5f - (xhalf * x * x));
 	return (x);
 }

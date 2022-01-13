@@ -28,13 +28,13 @@ OBJS_CK		:=	$(SRCS_CK:.c=.o)
 COLOR=\033[0;45m
 NC=\033[0m # No Color
 
-.PHONY		: libft all clean fclean re
+.PHONY		:	libft all clean fclean re
 
 all			:	libft $(NAME_PS) 
 	@echo -e "${COLOR}Der Pusswap ist gemacht${NC}"
 
 libft		:
-	@$(MAKE) -C libft
+	@$(MAKE) -j -C libft
 
 %.o			:	%.c 
 	@$(CC) $(INCL_FLAG) -o $@ -c $<
@@ -45,7 +45,7 @@ $(NAME_PS)	:	$(OBJS_PS) libft/libft.a
 $(NAME_CK)	:	$(OBJS_CK) libft/libft.a
 	@$(CC) $(OBJS_CK) -o $@ $(LIBFT_FLAG) 
 
-bonus		: libft $(NAME_CK)
+bonus		:	libft $(NAME_CK)
 	@echo -e "${COLOR}Der Pusswap  Bonus ist gemacht${NC}"
 
 clean		:

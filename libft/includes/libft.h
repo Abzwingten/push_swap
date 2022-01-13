@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/05 16:05:11 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 15:46:50 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/13 19:15:47 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	save_free(char **str);
 void	ft_bzero(void *str, size_t n);
 void	*ft_calloc(size_t num, size_t size);
 char	*ft_strdup(const char *str);
-void    ft_intswap(int* a, int* b);
+void	ft_intswap(int *a, int *b);
 
 void	*ft_memset(void *str, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
@@ -66,7 +66,6 @@ void	*ft_memchr(const void *str, int c, size_t n);
 void	*ft_memfree(void **ptr);
 
 void	quick_sort(int arr[], int low, int high);
-int		find_pivot(int arr[], int low, int high);
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
