@@ -65,7 +65,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memchr(const void *str, int c, size_t n);
 void	*ft_memfree(void **ptr);
 
-void	quick_sort(int arr[], int low, int high);
+void	quick_sort(int *arr, int low, int high);
 
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);

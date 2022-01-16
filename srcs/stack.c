@@ -54,11 +54,11 @@ t_node	*pop(t_stack *stack)
 	return (ret);
 }
 
-void	append(t_pusw *tridge, t_stack *stack, int value)
+void	append(t_pusw *t_b, t_stack *stack, int value)
 {
 	t_node	*node;
 
-	node = new_node(tridge, value);
+	node = new_node(t_b, value);
 	if (!stack)
 		return ;
 	if (!stack->head)
@@ -77,13 +77,13 @@ void	append(t_pusw *tridge, t_stack *stack, int value)
 	stack->size++;
 }
 
-t_node	*new_node(t_pusw *tridge, int value)
+t_node	*new_node(t_pusw *t_b, int value)
 {
 	t_node	*new;
 
 	new = (t_node *)malloc(sizeof(t_node));
 	if (!new)
-		error_exit(tridge);
+		error_exit(t_b);
 	new->value = value;
 	new->prev = NULL;
 	new->next = NULL;

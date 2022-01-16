@@ -12,62 +12,47 @@
 
 #include "push_swap.h"
 
-void	parse_args(t_pusw *tridge, char **arg, int ac)
-{
-	int	i;
-
-	i = 1;
-	if (ac == 2)
-		i = 0;
-	while (arg[i])
-	{
-		append(tridge, tridge->a, get_int(tridge, arg[i]));
-		if (ac == 2)
-			free(arg[i]);
-		i++;
-	}
-	if (ac == 2)
-		free(arg);
-}
-
-void	check_for_dups(t_pusw *tridge)
+void	check_for_dups(t_pusw *t_b)
 {
 	int		i;
 	t_node	*j;
 	t_node	*k;
 
 	i = -1;
-	j = tridge->a->head;
-	while (++i < (int)tridge->a->size)
+	j = t_b->a->head;
+	while (++i < (int)t_b->a->size)
 	{
 		k = j->next;
 		while (j != k)
 		{
 			if (j->value == k->value)
-				error_exit(tridge);
+			{
+				error_exit(t_b);
+				ft_printf("Dups!");
+			}
 			k = k->next;
 		}
 		j = j->next;
 	}
 }
 
-void	least_case_sort(t_pusw *tridge)
+void	least_case_sort(t_pusw *t_b)
 {
-	if (tridge->a->size == 2
-		|| !(((tridge->tmp[0] == tridge->arr[2]) && (tridge->tmp[1] == tridge->arr[0]))
-			|| ((tridge->tmp[1] == tridge->arr[2]) && (tridge->tmp[2] == tridge->arr[0]))))
-		sx(tridge->a);
-	if (tridge->a->size == 2)
+	if (t_b->a->size == 2
+		|| !(((t_b->tmp[0] == t_b->arr[2]) && (t_b->tmp[1] == t_b->arr[0]))
+			|| ((t_b->tmp[1] == t_b->arr[2]) && (t_b->tmp[2] == t_b->arr[0]))))
+		sx(t_b->a);
+	if (t_b->a->size == 2)
 		return ;
-	tridge->tmp[0] = tridge->a->head->value;
-	tridge->tmp[1] = tridge->a->head->next->value;
-	tridge->tmp[2] = tridge->a->head->next->next->value;
-	if (tridge->a->size != 2
-		&& ((tridge->tmp[0] == tridge->arr[2]) && (tridge->tmp[1] == tridge->arr[0])))
-		rx(tridge->a);
-	else if (tridge->a->size != 2
-		&& ((tridge->tmp[1] == tridge->arr[2]) && (tridge->tmp[2] == tridge->arr[0])))
-		rrx(tridge->a);
+	t_b->tmp[0] = t_b->a->head->value;
+	t_b->tmp[1] = t_b->a->head->next->value;
+	t_b->tmp[2] = t_b->a->head->next->next->value;
+	if (t_b->a->size != 2
+		&& ((t_b->tmp[0] == t_b->arr[2]) && (t_b->tmp[1] == t_b->arr[0])))
+		rx(t_b->a);
+	else if (t_b->a->size != 2
+		&& ((t_b->tmp[1] == t_b->arr[2]) && (t_b->tmp[2] == t_b->arr[0])))
+		rrx(t_b->a);
 }
 
 t_bool	check_if_sorted(t_stack *stack)

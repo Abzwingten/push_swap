@@ -12,22 +12,22 @@
 
 #include "push_swap.h"
 
-void	pa(t_pusw *tridge)
+void	pa(t_pusw *t_b)
 {
-	if (tridge->b->size < 1)
+	if (t_b->b->size < 1)
 		return ;
-	push(tridge->a, pop(tridge->b));
-	if (!tridge->is_checked)
+	push(t_b->a, pop(t_b->b));
+	if (!t_b->is_checked)
 		ft_printf("pa\n");
 }
 
-void	pb(t_pusw *tridge)
+void	pb(t_pusw *t_b)
 {
-	if (tridge->a->size < 1)
+	if (t_b->a->size < 1)
 		return ;
-	push(tridge->b, pop(tridge->a));
-	if (!tridge->is_checked)
-		write(1, "pb\n", 3);
+	push(t_b->b, pop(t_b->a));
+	if (!t_b->is_checked)
+		ft_printf("pb\n");
 }
 
 void	sx(t_stack *x)
@@ -45,27 +45,28 @@ void	sx(t_stack *x)
 		ft_printf("s%c\n", x->name);
 }
 
-void	ss(t_pusw *tridge)
+void	ss(t_pusw *t_b)
 {
 	t_node	*pop_a1;
 	t_node	*pop_a2;
 	t_node	*pop_b1;
 	t_node	*pop_b2;
 
-	if (tridge->a->size >= 2)
+	if (t_b->a->size >= 2)
 	{
-		pop_a1 = pop(tridge->a);
-		pop_a2 = pop(tridge->a);
-		push(tridge->a, pop_a1);
-		push(tridge->a, pop_a2);
+		pop_a1 = pop(t_b->a);
+		pop_a2 = pop(t_b->a);
+		push(t_b->a, pop_a1);
+		push(t_b->a, pop_a2);
 	}
-	if (tridge->b->size >= 2)
+	if (t_b->b->size >= 2)
 	{
-		pop_b1 = pop(tridge->b);
-		pop_b2 = pop(tridge->b);
-		push(tridge->b, pop_b1);
-		push(tridge->b, pop_b2);
+		pop_b1 = pop(t_b->b);
+		pop_b2 = pop(t_b->b);
+		push(t_b->b, pop_b1);
+		push(t_b->b, pop_b2);
 	}
-	if (!tridge->is_checked && (tridge->a->size >= 2 || tridge->b->size >= 2))
-		write(1, "ss\n", 3);
+	if (!t_b->is_checked && (t_b->a->size >= 2 || t_b->b->size >= 2))
+		pt_printf("ss\n");
+
 }

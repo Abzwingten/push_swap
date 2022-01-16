@@ -12,62 +12,32 @@
 
 #include "libft.h"
 
-static int	find_pivot(int arr[], int low, int high)
-{
-	int	x;
-	int	i;
-	int	j;
-
-	x = arr[high];
-	i = (low - 1);
-	j = low;
-	while (j <= high - 1)
-	{
-		if (arr[j] <= x)
-		{
-			i++;
-			ft_intswap(&arr[i], &arr[j]);
-		}
-		j++;
-	}
-	ft_intswap(&arr[i + 1], &arr[high]);
-	return (i + 1);
-}
-
-static void	free_arr(int *aux_arr)
-{
-	if (!aux_arr)
-	{
-		free(aux_arr);
-		exit(1);
-	}
-}
 
 void	quick_sort(int *arr, int low, int high)
 {
-	int	*aux_arr;
-	int	top;
+	int	i;
+	int	j;
 	int	pivot;
+	int	tmp;
 
-	aux_arr = malloc(high - low + 1);
-	free_arr(aux_arr);
-	top = -1;
-	aux_arr[++top] = low;
-	aux_arr[++top] = high;
-	while (top >= 0)
+	i = low;
+	j = high;
+	pivot = arr[(low + high) / 2];
+	while (i <= j)
 	{
-		high = aux_arr[top--];
-		low = aux_arr[top--];
-		pivot = find_pivot(arr, low, high);
-		if (pivot - 1 > low)
+		while (arr[i] < pivot)
+			i++;
+		while (arr[j] > pivot)
+			j--;
+		if (i <= j)
 		{
-			aux_arr[++top] = low;
-			aux_arr[++top] = pivot - 1;
-		}
-		if (pivot + 1 < high)
-		{
-			aux_arr[++top] = pivot + 1;
-			aux_arr[++top] = high;
+			tmp = arr[i];
+			arr[i++] = arr[j];
+			arr[j--] = tmp;
 		}
 	}
+	if (low < j)
+		quick_sort(arr, low, j);
+	if (i < high)
+		quick_sort(arr, i, high);
 }

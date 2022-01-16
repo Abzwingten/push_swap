@@ -21,14 +21,15 @@ void	rx(t_stack *x)
 		ft_printf("r%c\n", x->name);
 }
 
-void	rr(t_pusw *tridge)
+void	rr(t_pusw *t_b)
 {
-	if (tridge->a->size >= 2)
-		tridge->a->head = tridge->a->head->next;
-	if (tridge->b->size >= 2)
-		tridge->b->head = tridge->b->head->next;
-	if (!tridge->is_checked && (tridge->a->size >= 2 || tridge->b->size >= 2))
-		write(1, "rr\n", 3);
+	if (t_b->a->size >= 2)
+		t_b->a->head = t_b->a->head->next;
+	if (t_b->b->size >= 2)
+		t_b->b->head = t_b->b->head->next;
+	if (!t_b->is_checked && (t_b->a->size >= 2 || t_b->b->size >= 2))
+		ft_printf("rr\n");
+
 }
 
 void	rrx(t_stack *x)
@@ -40,12 +41,12 @@ void	rrx(t_stack *x)
 		ft_printf("rr%c\n", x->name);
 }
 
-void	rrr(t_pusw *tridge)
+void	rrr(t_pusw *t_b)
 {
-	if (tridge->a->size >= 2)
-		tridge->a->head = tridge->a->head->prev;
-	if (tridge->b->size >= 2)
-		tridge->b->head = tridge->b->head->prev;
-	if (!tridge->is_checked && (tridge->a->size >= 2 || tridge->b->size >= 2))
-		write(1, "rrr\n", 3);
+	if (t_b->a->size >= 2)
+		t_b->a->head = t_b->a->head->prev;
+	if (t_b->b->size >= 2)
+		t_b->b->head = t_b->b->head->prev;
+	if (!t_b->is_checked && (t_b->a->size >= 2 || t_b->b->size >= 2))
+		ft_printf("rrr\n");
 }

@@ -12,54 +12,54 @@
 
 #include "push_swap.h"
 
-void	move_checker(t_pusw *tridge, int operation)
+void	move_checker(t_pusw *t_b, int operation)
 {
 	if (operation == OPER_SA)
-		sx(tridge->a);
+		sx(t_b->a);
 	else if (operation == OPER_SB)
-		sx(tridge->b);
+		sx(t_b->b);
 	else if (operation == OPER_SS)
-		ss(tridge);
+		ss(t_b);
 	else if (operation == OPER_PA)
-		pa(tridge);
+		pa(t_b);
 	else if (operation == OPER_PB)
-		pb(tridge);
+		pb(t_b);
 	else if (operation == OPER_RA)
-		rx(tridge->a);
+		rx(t_b->a);
 	else if (operation == OPER_RB)
-		rx(tridge->b);
+		rx(t_b->b);
 	else if (operation == OPER_RR)
-		rr(tridge);
+		rr(t_b);
 	else if (operation == OPER_RRA)
-		rrx(tridge->a);
+		rrx(t_b->a);
 	else if (operation == OPER_RRB)
-		rrx(tridge->b);
+		rrx(t_b->b);
 	else if (operation == OPER_RRR)
-		rrr(tridge);
+		rrr(t_b);
 }
 
-void	checker(t_pusw *tridge)
+void	checker(t_pusw *t_b)
 {
 	char		*line;
 	const char	*operation[12] = {"sa", "sb", "ss", "pa", "pb", \
 							"ra", "rb", "rr", "rra", "rrb", "rrr", NULL};
 	int			i;
-
+	
 	while (get_next_line(0, &line))
 	{
 		i = 0;
 		while (operation[i] && ft_strncmp(operation[i], line, ft_strlen(operation[i]) + 1))
 			i++;
 		if (i != 11)
-			move_checker(tridge, i);
+			move_checker(t_b, i);
 		else
 		{
 			free(line);
-			error_exit(tridge);
+			error_exit(t_b);
 		}
 		free(line);
 	}
-	if (!tridge->b->size && check_if_sorted(tridge->a))
+	if (!t_b->b->size && check_if_sorted(t_b->a))
 		ft_printf("OK\n");
 	else
 		ft_printf("KO\n");
@@ -69,26 +69,26 @@ int	main(int argc, char **argv)
 {
 	t_stack	*a;
 	t_stack	*b;
-	t_pusw	*tridge;
+	t_pusw	*t_b;
 	char	**args;
 
 	if (argc < 2)
 		return (0);
 	a = (t_stack *)ft_calloc(1, sizeof(t_stack));
 	b = (t_stack *)ft_calloc(1, sizeof(t_stack));
-	tridge = (t_pusw *)ft_calloc(1, sizeof(t_pusw));
-	tridge->a = a;
-	tridge->b = b;
+	t_b = (t_pusw *)ft_calloc(1, sizeof(t_pusw));
+	t_b->a = a;
+	t_b->b = b;
 	if (argc == 2)
 	{
 		args = ft_split(argv[1], ' ');
-		parse_args(tridge, args, argc);
+		parse_args(t_b, args, argc);
 	}
 	else if (argc > 2)
-		parse_args(tridge, argv, argc);
-	check_for_dups(tridge);
-	tridge->size = a->size;
-	tridge->is_checked = 1;
-	checker(tridge);
-	return (free_all(tridge));
+		parse_args(t_b, argv, argc);
+	check_for_dups(t_b);
+	t_b->size = a->size;
+	t_b->is_checked = 1;
+	checker(t_b);
+	return (free_all(t_b));
 }

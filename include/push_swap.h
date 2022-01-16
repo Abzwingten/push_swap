@@ -65,62 +65,62 @@ typedef struct s_pusw
 	t_stack	*b;
 }	t_pusw;
 
-void	push_swap(t_pusw *tridge);
-void	move_checker(t_pusw *tridge, int operation);
-void	checker(t_pusw *tridge);
+void	push_swap(t_pusw *t_b);
+void	move_checker(t_pusw *t_b, int operation);
+void	checker(t_pusw *t_b);
 void	push(t_stack *stack, t_node *node);
 t_node	*pop(t_stack *stack);
-void	append(t_pusw *tridge, t_stack *stack, int value);
-t_node	*new_node(t_pusw *tridge, int value);
-t_bool	is_corr(t_pusw *tridge, t_node *a, t_node *b);
-int		calc_min(t_pusw *tridge, t_node *na, t_node *nb, int m);
-void	move(t_pusw *tridge, int dir, t_stack	*s, int m);
-void	align(t_pusw *tridge, t_node *n);
-void	solve(t_pusw *tridge, t_stack *a, t_stack *b, int *min);
-void	parse_args(t_pusw *tridge, char **arg, int ac);
-void	check_for_dups(t_pusw *tridge);
-void	least_case_sort(t_pusw *tridge);
+void	append(t_pusw *t_b, t_stack *stack, int value);
+t_node	*new_node(t_pusw *t_b, int value);
+t_bool	is_corr(t_pusw *t_b, t_node *a, t_node *b);
+int		calc_min(t_pusw *t_b, t_node *na, t_node *nb, int m);
+void	move(t_pusw *t_b, int dir, t_stack	*s, int m);
+void	align(t_pusw *t_b, t_node *n);
+void	solve(t_pusw *t_b, t_stack *a, t_stack *b, int *min);
+void	parse_args(t_pusw *t_b, char **arg, int ac);
+void	check_for_dups(t_pusw *t_b);
+void	least_case_sort(t_pusw *t_b);
 t_bool	check_if_sorted(t_stack *stack);
 void	quick_sort(int arr[], int l, int h);
 int		find_pivot(int arr[], int l, int h);
 
-int		free_all(t_pusw *tridge);
-void	error_exit(t_pusw *tridge);
-int		get_int(t_pusw *tridge, const char *str);
-void	test(t_pusw *tridge);
+int		free_all(t_pusw *t_b);
+void	error_exit(t_pusw *t_b);
+int		get_int(t_pusw *t_b, const char *str);
+void	test(t_pusw *t_b);
 
-void	pa(t_pusw *tridge);
-void	pb(t_pusw *tridge);
+void	pa(t_pusw *t_b);
+void	pb(t_pusw *t_b);
 void	sx(t_stack *x);
-void	ss(t_pusw *tridge);
+void	ss(t_pusw *t_b);
 void	rx(t_stack *x);
-void	rr(t_pusw *tridge);
+void	rr(t_pusw *t_b);
 void	rrx(t_stack *x);
-void	rrr(t_pusw *tridge);
+void	rrr(t_pusw *t_b);
 
 /*
 **	sa: swap a - swap the first 2 elements at the top of stack a.
 **		Do nothing if there is only one or no elements). -> sx(t_stack *x)
 **	sb: swap b - swap the first 2 elements at the top of stack b.
 **		Do nothing if there is only one or no elements). -> sx(t_stack *x)
-**	ss : sa and sb at the same time. -> ss(t_pusw *tridge)
+**	ss : sa and sb at the same time. -> ss(t_pusw *t_b)
 **
 **	pa: push a - take the first element at the top of b
-**		and put it at the top of a. Do nothing if b is empty. -> pa(t_pusw *tridge)
+**		and put it at the top of a. Do nothing if b is empty. -> pa(t_pusw *t_b)
 **	pb: push b - take the first element at the top of a
-**		and put it at the top of b. Do nothing if a is empty. -> pb(t_pusw *tridge)
+**		and put it at the top of b. Do nothing if a is empty. -> pb(t_pusw *t_b)
 **
 **	ra: rotate a - shift up all elements of stack a by 1.
 **		The first element becomes the last one. -> rx(t_stack *x)
 **	rb: rotate b - shift up all elements of stack b by 1.
 **		The first element becomes the last one. -> rx(t_stack *x)
-**	rr: ra and rb at the same time. -> rr(t_pusw *tridge)
+**	rr: ra and rb at the same time. -> rr(t_pusw *t_b)
 **
 **	rra: reverse rotate a - shift down all elements of stack a by 1.
 **		 The last element becomes the first one. -> rrx(t_stack *x)
 **	rrb: reverse rotate b - shift down all elements of stack b by 1.
 **		 The last element becomes the first one. -> rrx(t_stack *x)
-**	rrr: rra and rrb at the same time. -> rrr(t_pusw *tridge)
+**	rrr: rra and rrb at the same time. -> rrr(t_pusw *t_b)
 */
 
 #endif
