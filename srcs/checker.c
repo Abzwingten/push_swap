@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:14:54 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 20:55:46 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/19 12:09:38 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,14 +41,14 @@ void	move_checker(t_pusw *t_b, int operation)
 void	checker(t_pusw *t_b)
 {
 	char		*line;
-	const char	*operation[12] = {"sa", "sb", "ss", "pa", "pb", \
+	const char	*ops[12] = {"sa", "sb", "ss", "pa", "pb", \
 							"ra", "rb", "rr", "rra", "rrb", "rrr", NULL};
 	int			i;
-	
+
 	while (get_next_line(0, &line))
 	{
 		i = 0;
-		while (operation[i] && ft_strncmp(operation[i], line, ft_strlen(operation[i]) + 1))
+		while (ops[i] && ft_strncmp(ops[i], line, ft_strlen(ops[i]) + 1))
 			i++;
 		if (i != 11)
 			move_checker(t_b, i);

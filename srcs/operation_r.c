@@ -6,7 +6,7 @@
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/09 13:15:04 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/10 15:42:12 by rantario         ###   ########.fr       */
+/*   Updated: 2022/01/19 12:10:31 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	rr(t_pusw *t_b)
 		t_b->b->head = t_b->b->head->next;
 	if (!t_b->is_checked && (t_b->a->size >= 2 || t_b->b->size >= 2))
 		ft_printf("rr\n");
-
 }
 
 void	rrx(t_stack *x)

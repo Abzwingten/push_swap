@@ -1,42 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_quick.c                                    :+:      :+:    :+:   */
+/*   operation_p.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rantario <rantario@student.21-school.ru>   +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/13 18:40:26 by rantario          #+#    #+#             */
-/*   Updated: 2022/01/19 12:08:38 by rantario         ###   ########.fr       */
+/*   Created: 2022/01/09 13:14:58 by rantario          #+#    #+#             */
+/*   Updated: 2022/01/19 12:10:12 by rantario         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-void	quick_sort(int *arr, int low, int high)
+void	pa(t_pusw *t_b)
 {
-	int	i;
-	int	j;
-	int	pivot;
-	int	tmp;
+	if (t_b->b->size < 1)
+		return ;
+	push(t_b->a, pop(t_b->b));
+	if (!t_b->is_checked)
+		ft_printf("pa\n");
+}
 
-	i = low;
-	j = high;
-	pivot = arr[(low + high) / 2];
-	while (i <= j)
-	{
-		while (arr[i] < pivot)
-			i++;
-		while (arr[j] > pivot)
-			j--;
-		if (i <= j)
-		{
-			tmp = arr[i];
-			arr[i++] = arr[j];
-			arr[j--] = tmp;
-		}
-	}
-	if (low < j)
-		quick_sort(arr, low, j);
-	if (i < high)
-		quick_sort(arr, i, high);
+void	pb(t_pusw *t_b)
+{
+	if (t_b->a->size < 1)
+		return ;
+	push(t_b->b, pop(t_b->a));
+	if (!t_b->is_checked)
+		ft_printf("pb\n");
 }
